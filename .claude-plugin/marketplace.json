@@ -1,0 +1,25 @@
+{
+  "name": "conventions",
+  "owner": {
+    "name": "paramedoct",
+    "email": "paramedoct@gmail.com",
+    "url": "https://github.com/paramedoct"
+  },
+  "description": "Codex 및 Claude Code 환경에서 함께 사용하는 공용 개발 규약",
+  "plugins": [
+    {
+      "name": "conventions",
+      "source": "./",
+      "description": "에이전트가 따를 공용 개발 규약을 제공하는 플러그인",
+      "version": "0.1.0",
+      "author": {
+        "name": "paramedoct",
+        "email": "paramedoct@gmail.com",
+        "url": "https://github.com/paramedoct"
+      },
+      "homepage": "https://github.com/paramedoct/conventions",
+      "repository": "https://github.com/paramedoct/conventions",
+      "category": "Productivity"
+    }
+  ]
+}
