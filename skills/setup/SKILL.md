@@ -1,11 +1,11 @@
 ---
 name: setup
-description: 공용 개발 규약을 Codex와 Claude Code의 사용자 전체 지침으로 설치한다.
+description: 공용 개발 규약을 Codex 및 Claude Code 환경의 사용자 전체 지침으로 설치한다.
 ---
 
 # 전역 지침 설치
 
-이 스킬은 Codex와 Claude Code의 사용자 전체 지침을 이 플러그인의 공용 지침으로 완전히 교체한다.
+이 스킬은 Codex 및 Claude Code 환경의 사용자 전체 지침을 이 플러그인의 공용 지침으로 완전히 교체한다.
 
 ## 실행 전 확인
 
@@ -25,4 +25,4 @@ description: 공용 개발 규약을 Codex와 Claude Code의 사용자 전체 �
 
 - 표준 출력에 두 설치 경로가 표시되는지 확인한다.
 - 기존 파일이 있었다면 백업 경로가 표시되는지 확인한다.
-- Codex는 새 세션에서 `~/.codex/AGENTS.md`를 읽고, Claude Code는 새 세션에서 `~/.claude/CLAUDE.md`를 읽는다.
+- Codex 환경은 새 세션에서 `~/.codex/AGENTS.md`를 읽고, Claude Code 환경은 새 세션에서 `~/.claude/CLAUDE.md`를 읽는다.
