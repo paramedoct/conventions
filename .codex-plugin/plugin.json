@@ -1,0 +1,23 @@
+{
+  "name": "conventions",
+  "version": "0.1.0",
+  "description": "에이전트가 따를 공용 개발 규약을 제공하는 플러그인",
+  "author": {
+    "name": "paramedoct",
+    "email": "paramedoct@gmail.com",
+    "url": "https://github.com/paramedoct"
+  },
+  "homepage": "https://github.com/paramedoct/conventions",
+  "repository": "https://github.com/paramedoct/conventions",
+  "keywords": ["규약", "개발", "에이전트"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "개발 규약",
+    "shortDescription": "공용 개발 규약과 언어별 지침",
+    "longDescription": "Codex와 Claude Code에서 함께 사용하는 공용 개발 규약을 제공합니다.",
+    "developerName": "paramedoct",
+    "category": "Productivity",
+    "capabilities": ["Write"],
+    "defaultPrompt": ["Bash 작업에 개발 규약을 적용해 주세요."]
+  }
+}
