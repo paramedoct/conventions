@@ -15,10 +15,10 @@ description: 공용 개발 규약을 Codex 및 Claude Code 환경의 사용자 �
 
 ## 실행 방법
 
-현재 작업 공간이 아니라, 이 스킬 파일이 포함된 플러그인 루트의 `setup` 명령 파일을 실행한다.
+현재 작업 공간이 아니라, 이 `SKILL.md`와 같은 디렉터리에 포함된 `scripts/setup`을 실행한다.
 
 ```bash
-./setup --force
+scripts/setup --force
 ```
 
 ## 설치 결과 확인
