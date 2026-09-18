@@ -2,36 +2,13 @@
 
 Codex 및 Claude Code 환경에서 함께 사용하는 공용 개발 규약 플러그인입니다.
 
-## 구성
+## 제공 기능
 
-- `instructions/AGENTS.md`: Codex 전역 지침 원본
-- `instructions/CLAUDE.md`: Claude Code 전역 지침 원본. `AGENTS.md`를 가리키는 상대 심볼릭 링크입니다.
-- `skills/bash`: Bash 작업에 적용할 언어별 지침
-- `skills/setup`: 사용자 전체 지침 설치 절차
+- `bash` 스킬: Bash 작업에 공용 개발 규약을 적용합니다.
+- `setup` 스킬: 공용 개발 규약을 사용자 전체 지침으로 설치합니다.
 
 ## 사용
 
-Codex 환경에서는 플러그인 디렉터리를 사용자 플러그인 경로에 복사합니다.
+Codex 또는 Claude Code의 플러그인 설치 기능으로 `conventions` 플러그인을 설치합니다. 이 저장소를 직접 복제해 명령을 실행할 필요는 없습니다.
 
-```bash
-mkdir -p ~/.codex/plugins
-cp -R /path/to/conventions ~/.codex/plugins/conventions
-```
-
-Claude Code 환경에서는 플러그인 루트를 지정해 로컬 플러그인으로 불러옵니다.
-
-```bash
-claude --plugin-dir /path/to/conventions
-```
-
-전역 지침 설치는 `setup` 스킬을 호출한 뒤 승인합니다. 이 작업은 기존 `~/.codex/AGENTS.md`와 `~/.claude/CLAUDE.md`를 완전히 교체하며, 기존 파일은 타임스탬프가 붙은 백업 파일로 보존합니다.
-
-```bash
-./setup --force
-```
-
-## 검증
-
-```bash
-./test
-```
+설치 후 `setup` 스킬을 호출하고 전역 지침 교체를 승인합니다. 기존 `~/.codex/AGENTS.md`와 `~/.claude/CLAUDE.md`는 타임스탬프가 붙은 백업 파일로 보존됩니다.
