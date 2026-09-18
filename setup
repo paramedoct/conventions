@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+usage() {
+  echo "usage: $0 --force" >&2
+  exit 1
+}
+
+# shellcheck source=/dev/null
+source "$ROOT_DIR/utils/source"
+source_modules utils/install
+
+main() {
+  [ "$#" -eq 1 ] && [ "$1" = "--force" ] || usage
+  install_global "$ROOT_DIR"
+}
+
+main "$@"

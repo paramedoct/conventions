@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+fail() {
+  echo "실패: $1" >&2
+  exit 1
+}
+
+main() {
+  local temp_dir
+  local codex_dir
+  local claude_dir
+
+  temp_dir=$(mktemp -d "${TMPDIR:-/tmp}/conventions.XXXXXX")
+  trap "rm -rf '$temp_dir'" EXIT
+  codex_dir="$temp_dir/codex"
+  claude_dir="$temp_dir/claude"
+  mkdir -p "$codex_dir" "$claude_dir"
+  printf '기존 Codex 지침\n' > "$codex_dir/AGENTS.md"
+  printf '기존 Claude 지침\n' > "$claude_dir/CLAUDE.md"
+
+  CODEX_HOME="$codex_dir" CLAUDE_CONFIG_DIR="$claude_dir" \
+    "$ROOT_DIR/setup" --force > "$temp_dir/output"
+
+  cmp -s "$ROOT_DIR/instructions/AGENTS.md" "$codex_dir/AGENTS.md" || fail "Codex 지침"
+  cmp -s "$ROOT_DIR/instructions/CLAUDE.md" "$claude_dir/CLAUDE.md" || fail "Claude 지침"
+  find "$codex_dir" -name 'AGENTS.md.conventions-backup.*' -type f | grep -q . || fail "Codex 백업"
+  find "$claude_dir" -name 'CLAUDE.md.conventions-backup.*' -type f | grep -q . || fail "Claude 백업"
+  "$ROOT_DIR/setup" > /dev/null 2>&1 && fail "인수 검사"
+
+  echo "검증 완료"
+}
+
+main "$@"
