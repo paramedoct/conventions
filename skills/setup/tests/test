@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 PLUGIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
+TEST_TEMP_DIR=
+
+cleanup() {
+  [ -z "$TEST_TEMP_DIR" ] || rm -rf "$TEST_TEMP_DIR"
+}
 
 fail() {
   echo "실패: $1" >&2
@@ -13,7 +18,8 @@ main() {
   local claude_dir
 
   temp_dir=$(mktemp -d "${TMPDIR:-/tmp}/conventions.XXXXXX")
-  trap "rm -rf '$temp_dir'" EXIT
+  TEST_TEMP_DIR=$temp_dir
+  trap cleanup EXIT
   codex_dir="$temp_dir/codex"
   claude_dir="$temp_dir/claude"
   mkdir -p "$codex_dir" "$claude_dir"
